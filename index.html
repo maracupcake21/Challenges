@@ -5,10 +5,33 @@
     <script src="https://fb.me/react-dom-15.0.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
     <script src="main.js" type="text/babel"></script>
+    <script src="./scripts/Chart.js"></script>
     <meta charset="utf-8">
     <title>Evolve Challenge</title>
   </head>
-  <body>
+  <body style="margin: 0px 20px">
     <div id="container"></div>
+    <div id="chart" style="margin: 50px 0px">
+      <div>
+        <canvas id="chart-area" width="400" height="200"></canvas>
+      </div>
+     </div>
+    <script>
+      var barChartData = {
+        labels : ["ASIA","EUR","USA"],
+        datasets : [
+          {
+            fillColor : "#e9e225",
+            strokeColor : "#ffffff",
+            highlightFill : "#ee7f49",
+            highlightStroke : "#ffffff",
+            data : [40,50,15]
+          }
+        ]
+      }	
+        
+    var ctx = document.getElementById("chart-area").getContext("2d");			
+    window.myPie = new Chart(ctx).Bar(barChartData, {responsive:false});
+    </script>
   </body>
 </html>

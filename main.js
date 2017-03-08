@@ -1,4 +1,4 @@
-//ReactDOM.render(<h1>Performance Test</h1>, document.getElementById('root'));
+var maxRequests = 100;
 
 var Header = React.createClass({
   render: function() {
@@ -21,7 +21,7 @@ var Body = React.createClass({
          event.preventDefault();
       }
       else{
-        if (Number(event.target.value + event.key)<=100){
+        if (Number(event.target.value + event.key) <= maxRequests){
             this.setState({ value: event.target.value })
         }
         else{
@@ -42,13 +42,28 @@ var Body = React.createClass({
         <input id="hostinput" ref="text"/>
         <h4>Number of requests</h4>
         <input id="rquestnumberinput" type="text" onKeyPress={this.onKeyPress}/>
-        <button onClick={this.start}>Start!</button>
+        <button id="btnstart" onClick={this.start}>Start!</button>
       </div>
     );
   }
 });
 
+/*var Chart = React.createClass({
+  render: function() {
+    return (
+        <div id="chart" style="margin: 50px 0px">
+            <div>
+                <canvas id="chart-area" width="400" height="200"></canvas>
+            </div>
+        </div>
+    );
+  }
+});*/
+
 ReactDOM.render(
-  <div><div><Header /></div><div><Body /></div></div>,
+  <div>
+    <Header />
+    <Body />
+  </div>,
   document.getElementById('container')
 );
