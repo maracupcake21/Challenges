@@ -1,3 +1,4 @@
+//var db = require('./models/DBConnection');
 var maxRequests = 100;
 
 var Header = React.createClass({
