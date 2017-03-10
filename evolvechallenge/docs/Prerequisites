@@ -1,0 +1,26 @@
+->Install GITHub Desktop 
+    ->Create public repository (https://github.com/rochydevs/Challenges)
+    ->Syncronizing to the repository
+    ->inviting collaborators (https://help.github.com/articles/inviting-collaborators-to-a-personal-repository/)
+->Install visual studio code (https://code.visualstudio.com/)
+->Install nodeJS (https://nodejs.org/es/)
+
+How to start creating a react project (http://vensign.com/reactjs-instalar-todo-lo-necesario-para-empezar/)
+
+
+->Install MongoDB (https://www.mongodb.com/download-center?jmp=nav#community)
+    ->Build (https://www.mongodb.com/dr/fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.4.2-signed.msi/download)
+    ->Installation guide (https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/ see "Manually Create a Windows Service for MongoDB Community Edition")
+        ->Step 3)Copy mongod.cfg file from resources folder in the project to the OS folder "C:\Program Files\MongoDB\Server\3.4"
+        ->how to start mongo console (https://docs.mongodb.com/manual/mongo/) to see for example if the new item is added in the database (using console C:\Program Files\MongoDB\Server\3.4\bin\mongo)
+        ->you can use mongo for testing using the console (validates that the database is runing, that can create the tables, registers...  http://alvinalexander.com/linux-unix/how-to-create-mongodb-database-collection)
+
+->MongoDB client Studio 3t (https://studio3t.com/download-thank-you/?OS=win32)
+->For run mongo you should show the terminal in visual studio code and do "npm install mongoose"
+
+->How to debug visual studio code project (https://code.visualstudio.com/docs/editor/debugging) 
+
+Xavi
+===================
+For cucumber testing
+Install "Internet Information Services" IIS (https://msdn.microsoft.com/en-us/library/ms181052(v=vs.80).aspx)
