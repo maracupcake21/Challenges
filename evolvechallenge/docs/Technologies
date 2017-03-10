@@ -1,4 +1,6 @@
 ReactJS
 NodeJS
-WebPack
+WebPack (generate build and deploy in localhost)
 Babel
+Express
+Mongoose (connecto to mongoDB)
