@@ -2,10 +2,15 @@ var express         = require("express"),
     app             = express(),
     bodyParser      = require("body-parser"),
     methodOverride  = require("method-override"),
-    mongoose        = require('mongoose');
+    mongoose        = require('mongoose'),
+    constants       = require('../helpers/const');
 
 // Connection to DB
-mongoose.connect('mongodb://localhost:27017/evolveChallenge', function(err, res) {
+/*mongoose.connect('mongodb://localhost:27017/evolveChallenge', function(err, res) {
+  if(err) throw err;
+  console.log('Connected to Database');
+});*/
+mongoose.connect(constants.databaseConnectionString, function(err, res) {
   if(err) throw err;
   console.log('Connected to Database');
 });
@@ -34,6 +39,6 @@ performanceTests.route('/PerformanceTest')
 app.use(performanceTests);
 
 // Start server
-app.listen(3000, function() {
-  console.log("Node server running on http://localhost:3000");
+app.listen(constants.serviceRestPort, function() {
+  console.log("Node server running on http://localhost:" + constants.serviceRestPort);
 });
