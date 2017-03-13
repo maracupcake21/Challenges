@@ -1,2 +1,10 @@
-in the temrinal "npm start"  (make sure that you are in the project folder)
+
+How to launch website
+=====================
+in the terminal "npm start"  (make sure that you are in the project folder)
 open explorer and set the url http://localhost:3333 (it works!!)
+
+How to launch service rest (in another terminal)
+====================
+node Server/RestService.js(the server file)
+http://localhost:3000/ (should return if the service is available)

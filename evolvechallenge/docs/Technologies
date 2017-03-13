@@ -1,6 +1,14 @@
-ReactJS
-NodeJS
+ReactJS (lenguaje front-end)
+NodeJS (lenguaje back-end)
 WebPack (generate build and deploy in localhost)
 Babel
-Express
-Mongoose (connecto to mongoDB)
+Express (Para conectar a MongoDB)
+Mongoose (mapear los modelos de datos)
+API RESTful (es aquella que emplea todos los verbos HTTP (GET, POST, PUT y DELETE mayormente) )
+aplicación CRUD (Create/Read/Update/Delete)
+bodyParser (parsear JSON)
+method-override (nos permite implementar y personalizar métodos HTTP40 )
+JSON (formato de datos)
+Studio 3T for Mongodb (CLient DB)
+Test Api Rest (chrome-extension://cokgbflfommojglbmbpenpphppikmonn/index.html#response you need chrome extension " restconsole")
+tcp-ping (for doing ping to a host)
