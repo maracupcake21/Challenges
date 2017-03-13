@@ -1,3 +1,6 @@
+
+TECHNOLOGIES
+============
 ReactJS (lenguaje front-end)
 NodeJS (lenguaje back-end)
 WebPack (generate build and deploy in localhost)
@@ -9,6 +12,9 @@ aplicación CRUD (Create/Read/Update/Delete)
 bodyParser (parsear JSON)
 method-override (nos permite implementar y personalizar métodos HTTP40 )
 JSON (formato de datos)
+tcp-ping (for doing ping to a host)
+
+TOOLS
+=====
 Studio 3T for Mongodb (CLient DB)
 Test Api Rest (chrome-extension://cokgbflfommojglbmbpenpphppikmonn/index.html#response you need chrome extension " restconsole")
-tcp-ping (for doing ping to a host)
