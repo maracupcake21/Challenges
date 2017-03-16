@@ -38,3 +38,7 @@ grunt cucumberjs                  (make sure that you are in the Test folder)
    with firefox browser. To run navigate_challenge.js go to Test folder and execute:
 
 node navigate_challenge.js       (make sure that you are in the Test folder)
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2acb434aee901492a1178008ae6c23f0d7452133
