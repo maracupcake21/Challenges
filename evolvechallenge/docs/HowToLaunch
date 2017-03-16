@@ -8,3 +8,19 @@ How to launch service rest (in another terminal)
 ====================
 node Server/RestService.js(the server file)
 http://localhost:3000/ (should return if the service is available)
+
+
+How to install dependencies
+====================
+npm i 
+
+first you should install the dependencies with save and the package.json will be updated
+npm i --save cors
+npm i --save WebPack
+npm i --save Babel
+npm i --save Express
+npm i --save Mongoose
+npm i --save bodyParser
+npm i --save method-override
+npm i --save tcp-ping
+npm i --save flux

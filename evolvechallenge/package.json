@@ -9,8 +9,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "Express": "^3.0.1",
+    "cors": "^2.8.1",
+    "flux": "^3.1.2",
+    "method-override": "^2.3.7",
+    "mongoose": "^4.8.6",
     "react": "^0.14.8",
-    "react-dom": "^0.14.8"
+    "react-css-modules": "^4.1.0",
+    "react-dom": "^0.14.8",
+    "tcp-ping": "^0.1.1",
+    "webpack": "^1.14.0"
   },
   "devDependencies": {
     "babel-core": "^6.23.1",

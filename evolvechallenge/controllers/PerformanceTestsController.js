@@ -10,16 +10,8 @@ var tcpp = require('tcp-ping');
 //POST - Insert a new Cluster in the DB
 exports.addPerformanceTest = function(req, res) {
 	console.log('Adding new test');
+	console.log(req);
 	console.log(req.body);
-
-	/*var counter = new Counter({
-		_id:    "performanceTest",
-		seq: 	  0
-	});
-
-	counter.save(function(err, counter) {
-		if(err) return res.send(500, err.message);
-	});*/
 
 	var performanceTest = new PerformanceTest({
 			id:    1,
@@ -34,42 +26,53 @@ exports.addPerformanceTest = function(req, res) {
 				console.log("host available: " + available);
 			});
 			
-			var response = []; 
-			tcpp.ping({ address: req.body.host , attempts: performanceTest.requestNumber}, function(err, data) {
-				var results = data.results;
-				var clusterid = 1;
-
-				console.log(data);
-				for(var index in results)
-				{
-					var performanceTestResponse = new PerformanceTestResponse({
-						idTest:    performanceTest.id,
-						isCluster: 	  clusterid,
-						responseTime:  results[index].time
-					});
-					performanceTestResponse.save(function(err, performanceTestResponse) {
-						if(err) return res.send(500, err.message);
-					});
-
-					response.push(performanceTestResponse); 
-
-					clusterid++;
-				}
-
+			pingHost(performanceTest, function(response) {
 				res.status(200).jsonp(response);
 			});
 		});
 };
 
-/*function getNextSequence(name) {
-   var db = mongoose.connection;
-   var ret = db.counter.findAndModify(
-          {
-            query: { _id: name },
-            update: { $inc: { seq: 1 } },
-            new: true
-          }
-   );
 
-   return ret.seq;
-}*/
+function pingHost(performanceTest, callback) {
+	var regions = [
+		{"name" : "Asia"},
+		{"name" : "Europe"},
+		{"name" : "America"}
+	]
+	var response = []; 
+	var pingsSuccessfully = 0;
+	var times;
+	for (region = 0; region < regions.length; region++) {
+		tcpp.ping({ address: performanceTest.host , attempts: performanceTest.requestNumber}, function(err, data) {
+			var results = data.results;
+			var clusterid = 1;
+			var region = regions[pingsSuccessfully].name;
+			var averageTime = 0;
+			times = 0;
+
+			console.log(data);
+			for(var index in results)
+			{
+				times = times + results[index].time;
+				clusterid++;
+			}
+
+			averageTime = Math.trunc( times / performanceTest.requestNumber);
+			var performanceTestResponse = new PerformanceTestResponse({
+				idTest:    performanceTest.id,
+				region: 	  region,
+				responseTime:  averageTime
+			});
+			performanceTestResponse.save(function(err, performanceTestResponse) {
+				if(err) return res.send(500, err.message);
+			});
+
+			response.push({"region" : region, "averageTimeResponse" : averageTime});
+			pingsSuccessfully++;
+			if (pingsSuccessfully == regions.length)
+			{
+				callback(response);
+			}
+		});
+	};
+};

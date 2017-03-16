@@ -5,7 +5,7 @@ var mongoose = require('mongoose')
  
 var performanceTestResponseSchema = new Schema({
     idTest : Number, // identifier of the test
-    isCluster : Number, // identifier of the cluster that did the test
+    region : String, // identifier of the cluster that did the test
     responseTime : Number // time of the response ms
 });
  
