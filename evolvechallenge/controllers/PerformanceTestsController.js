@@ -4,6 +4,7 @@ var PerformanceTest  = mongoose.model('PerformanceTest');
 var PerformanceTestResponse  = mongoose.model('PerformanceTestResponse');
 var Counter  = mongoose.model('Counter');
 var tcpp = require('tcp-ping');
+var cache = require('../Server/cache/cache'); 
 
 //require('../Server/ping');
 
@@ -13,23 +14,46 @@ exports.addPerformanceTest = function(req, res) {
 	console.log(req);
 	console.log(req.body);
 
-	var performanceTest = new PerformanceTest({
-			id:    1,
-			host: 	  req.body.host,
-			requestNumber:  req.body.requestNumber
-		});
+	const {hostName} = req.body.host 
 
-		performanceTest.save(function(err, performanceTest) {
-			if(err) return res.send(500, err.message);
-			
-			tcpp.probe(req.body.host, 80, function(err, available) {
-				console.log("host available: " + available);
+	 cache.exists(req.body.host, function(err, reply) {
+	    if (reply === 1) {
+	        cache.get(req.body.host, function (err, reply) {
+				var response = JSON.parse(reply);
+	            console.log(response);
+
+	            res.status(200).jsonp(response);
+	        });
+	    } else { 
+			var performanceTest = new PerformanceTest({
+				id:    1,
+				host: 	  req.body.host,
+				requestNumber:  req.body.requestNumber
 			});
-			
-			pingHost(performanceTest, function(response) {
-				res.status(200).jsonp(response);
+
+			performanceTest.save(function(err, performanceTest) {
+				if(err) return res.send(500, err.message);
+				
+				tcpp.probe(req.body.host, 80, function(err, available) {
+					console.log("host available: " + available);
+				});
+				
+				pingHost(performanceTest, function(response) {
+					var result= [];
+					for(var index in response)
+					{
+						result.push(response[index]);
+					}
+					
+					cache.set(req.body.host,JSON.stringify(response), function(err,reply){
+	                    console.log(reply);
+	                })   
+
+					res.status(200).jsonp(response);
+				});
 			});
-		});
+		}
+	});
 };
 
 

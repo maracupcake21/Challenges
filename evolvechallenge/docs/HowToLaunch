@@ -9,8 +9,6 @@ How to launch service rest (in another terminal)
 node Server/RestService.js(the server file)
 http://localhost:3000/ (should return if the service is available)
 
-<<<<<<< HEAD
-
 How to install dependencies
 ====================
 npm i 
@@ -25,6 +23,8 @@ npm i --save bodyParser
 npm i --save method-override
 npm i --save tcp-ping
 npm i --save flux
+npm i --save redis
+
 =======
 How to launch automation testing (in another terminal)
 =======================================================
@@ -38,4 +38,3 @@ grunt cucumberjs                  (make sure that you are in the Test folder)
    with firefox browser. To run navigate_challenge.js go to Test folder and execute:
 
 node navigate_challenge.js       (make sure that you are in the Test folder)
->>>>>>> 9a762946dde7976d7a3ba2bc58ba696363e1ef80

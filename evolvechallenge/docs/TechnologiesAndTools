@@ -14,6 +14,7 @@ JSON (formato de datos)
 tcp-ping (for doing ping to a host)
 cors (to allow format in request header)
 flux (framework about states, based on actions, dispatchers, stores and views)
+redis (servis that contains a cache)
 
 TOOLS
 =====

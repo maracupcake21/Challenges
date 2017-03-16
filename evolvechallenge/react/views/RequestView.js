@@ -27,7 +27,7 @@ var Body = React.createClass({
       requestnumberInputValue: '',
       charts: { data: [[0,0,0]], labels: ['Asia', 'Europe', 'America']},
 			//series: ['Average request times'],
-      data: [1,1,1],
+      //data: [1,1,1],
 			series: ['Average time response'],
 			labels: ['Asia', 'Europe', 'America'],
 			colors: ['#43A19E', '#7B43A1', '#F2317A']
@@ -109,13 +109,13 @@ componentDidMount: function() {
         <input id="requestnumberinput" value={this.state.requestnumberInputValue} onChange={this.updateRequestnumberInputValue} type="text" onKeyPress={this.onKeyPress}/>
         <button id="btnstart" onClick={this.start}>Start!</button>
         <section>
-          <Charts
-            data={ this.state.charts.data }
-            labels={ this.state.series }
-            colors={ this.state.colors }
-            height={ 250 }
-          />
-          <Legend labels={ this.state.labels } colors={ this.state.colors } />
+            <Charts
+              data={ this.state.charts.data }
+              labels={ this.state.series }
+              colors={ this.state.colors }
+              height={ 250 }
+            />
+            <Legend labels={ this.state.labels } colors={ this.state.colors } />
 			  </section>
       </div>
     );
