@@ -3,10 +3,25 @@ Feature: Performance Test
    As a user of Performance Test Challenge
    I should be able to get the response time
 
-   Scenario: Performance Test
+   Scenario Outline: Performance Test
    Given I open performance test for "Evolve Challenge"
-   When I enter "travelport.com" in host textbox
-   And I enter 15 as a number request
+   When I enter <hostname> in host textbox
+   And I enter <nrequest> as a number request
    Then I should get response time chart
    And I verify the response times
-   And finish
+   And Supose to <finish>
+
+
+     Examples:
+    | hostname       | nrequest | finish |
+    | travelport.com |  20      | no     |
+    | travelport.com |  20      | no     |
+    | google.com     |  15      | no     |
+    | google.com     |  15      | no     |
+    | twitter.com    |  12      | no     |
+    | travelport.com |  16      | no     |
+    | google.com     |  20      | no     |
+    | google.com     |  15      | no     |
+    | travelport.com |  20      | no     |
+    | travelport.com |  20      | yes    |
+    
