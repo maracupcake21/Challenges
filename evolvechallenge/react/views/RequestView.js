@@ -130,10 +130,17 @@ var Legend = React.createClass({
 		return (
 		<div className="Legend">
 			{ labels.map(function(label, labelIndex) {
+
+        var color = colors[labelIndex], style;
+							
+        style = {
+          backgroundColor: color
+        };
+
 				return (
 				<div>
-					<span className="Legend--color" style={{ backgroundColor: colors[labelIndex % colors.length]  }} />
-					<span className="Legend--label">{ label }</span>
+					<span id={"legendColor" + labelIndex} className="Legend--color" style={style} />
+					<span id={"legendName" + labelIndex} className="Legend--label">{ label }</span>
 				</div>
 				);
 			}) }
@@ -200,12 +207,12 @@ var Charts = React.createClass({
 							}
 						
 						 return (
-							 <div
+							 <div id={"bar" + itemIndex}
 							 	className={ 'Charts--item ' + (self.props.grouping) }
 							 	style={ style }
 								key={ itemIndex }
 							>
-							 	<b style={{ color: color }}>{ item }</b>
+							 	<b id={"barValue" + itemIndex} style={{ color: color }}>{ item }</b>
 							 </div>
 						);
 						}) }
