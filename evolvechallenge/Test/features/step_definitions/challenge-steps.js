@@ -35,7 +35,7 @@ var challenge = function() {
 
 	this.Then(/^I should get response time chart$/, function (next) {
   	driver.findElement(webdriver.By.id('btnstart')).click().then(next());	
-		//console.log(next);
+	
 
 	});
 	this.Then(/^I verify the response times$/, function (next) {
@@ -86,8 +86,6 @@ var challenge = function() {
  				});
 				 	
 		}, 5000);
-
-
 
 		next();	
 	  	
