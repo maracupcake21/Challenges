@@ -1,4 +1,6 @@
+var constants = require('../helpers/const')
 const redis = require('redis')
+//const client = redis.createClient()
 const client = redis.createClient()
 
 //Incase any error pops up, log it

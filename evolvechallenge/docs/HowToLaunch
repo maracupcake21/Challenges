@@ -1,4 +1,8 @@
 
+How to install all dependencies
+===================================
+npm install
+
 How to launch website
 =====================
 in the terminal "npm start"  (make sure that you are in the project folder)
@@ -14,16 +18,18 @@ How to install dependencies
 npm i 
 
 first you should install the dependencies with save and the package.json will be updated
-npm i --save cors
-npm i --save WebPack
-npm i --save Babel
-npm i --save Express
-npm i --save Mongoose
-npm i --save bodyParser
+npm i --save  cors
+npm i --save  WebPack
+npm i --save  Babel
+npm i --save  Express
+npm i --save  Mongoose
+npm i --save  body-Parser
 npm i --save method-override
-npm i --save tcp-ping
-npm i --save flux
-npm i --save redis
+npm i --save  tcp-ping
+npm i --save  flux
+npm i --save  redis
+npm i --save  -dev-server
+
 
 =======
 How to launch automation testing (in another terminal)
@@ -38,7 +44,4 @@ grunt cucumberjs                  (make sure that you are in the Test folder)
    with firefox browser. To run navigate_challenge.js go to Test folder and execute:
 
 node navigate_challenge.js       (make sure that you are in the Test folder)
-<<<<<<< HEAD
-=======
 
->>>>>>> 2acb434aee901492a1178008ae6c23f0d7452133
