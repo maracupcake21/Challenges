@@ -1,5 +1,4 @@
 # EvolveChallenge
-My EvolveChallenge
 
 How to install all dependencies
 ===================================
@@ -28,4 +27,7 @@ grunt cucumberjs                  (make sure that you are in the Test folder)
 
 node navigate_challenge.js       (make sure that you are in the Test folder)
 
+
+
+My EvolveChallenge
 
