@@ -1,5 +1,11 @@
 # EvolveChallenge
 
+Evolve Challenge is an app trainning that contains a website in react, connects to a Api rest than makes a ping to a the sended host from the webpage and then save the results in a mongo database and store the reasults also in a redist (cache), the next time that the user send the same host to the service it will take the results from the cache instead of making the ping again.
+
+When the front end gets the response from the host it will draw the results on a bar chart (three bars, Asia, Europe and Ameria because we are calling 3 times the ping action, the idea is simulates the pings from the different regions but this is not implemented yet, for the moment we are doing three pings).
+
+The idea is deploying all of this in azure, for the moment me deploy database and redis.
+
 How to install all dependencies
 ===================================
 npm install
