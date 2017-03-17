@@ -1,7 +1,6 @@
-var constants = require('../helpers/const')
+var constants = require('../../helpers/const')
 const redis = require('redis')
-//const client = redis.createClient()
-const client = redis.createClient()
+const client = redis.createClient(constants.redisPort, constants.redisHost, {auth_pass: constants.redisAuthPassTwo, tls: {servername: constants.redisHost}}) 
 
 //Incase any error pops up, log it
 client.on("error", function(err) {

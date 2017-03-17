@@ -14,5 +14,4 @@ module.exports = {
     redisAuthPassTwo : "oi20dNw0tIepKWQO3ekBWpLbaUYnxchnq9Cr3kcUsT8=",
     //Database
     databaseConnectionString:"mongodb://teamc:9bU4yjW0jeH64cGypW3UKXQpT85ReNIGKfIH6urzcxIA5mGeMYcL5PQgeKGXGnco6Rm2lsfI8dsi1YIXhXYquw==@teamc.documents.azure.com:10250/?ssl=true&sslverifycertificate=false"
-    //databaseConnectionString: "mongodb://localhost:27017/evolveChallenge"
 }

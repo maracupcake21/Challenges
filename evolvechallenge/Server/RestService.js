@@ -3,7 +3,7 @@ var express         = require("express"),
     bodyParser      = require("body-parser"),
     methodOverride  = require("method-override"),
     mongoose        = require('mongoose'),
-    constants       = require('../helpers/const')
+    constants       = require('../helpers/const'),
     cors            = require('cors');
 
 // Connection to DB
