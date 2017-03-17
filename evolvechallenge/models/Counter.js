@@ -4,7 +4,7 @@ var mongoose = require('mongoose')
   , Schema = mongoose.Schema;
  
 var counterSchema = new Schema({
-    _id : String, // identifier of counter
+    id : String, // identifier of counter
     seq : Number // last id
 });
  

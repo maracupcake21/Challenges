@@ -14,8 +14,6 @@ exports.addPerformanceTest = function(req, res) {
 	//console.log(req);
 	console.log(req.body);
 
-	const {hostName} = req.body.host 
-
 	 cache.exists(req.body.host, function(err, reply) {
 	    if (reply === 1) {
 			console.log('Found in cache');
@@ -25,35 +23,38 @@ exports.addPerformanceTest = function(req, res) {
 
 	            res.status(200).jsonp(response);
 	        });
-    } else {
-			console.log('Adding new request');
-			var performanceTest = new PerformanceTest({
-				id:    1,
-				host: 	  req.body.host,
-				requestNumber:  req.body.requestNumber
-			});
-
-			performanceTest.save(function(err, performanceTest) {
-				if(err) return res.send(500, err.message);
-				
-				tcpp.probe(req.body.host, 80, function(err, available) {
-					console.log("host available: " + available);
+	    } else {
+			getNextId('PerformanceTest', function(newId) {
+				console.log('Get next id successfull');
+				console.log('Adding new request');
+				var performanceTest = new PerformanceTest({
+					id:    newId,
+					host: 	  req.body.host,
+					requestNumber:  req.body.requestNumber
 				});
-				
-				pingHost(performanceTest, function(response) {
-					var result= [];
-					for(var index in response)
-					{
-						result.push(response[index]);
-					}
+
+				performanceTest.save(function(err, performanceTest) {
+					if(err) return res.send(500, err.message);
 					
-					cache.set(req.body.host,JSON.stringify(response), function(err,reply){
-	                    console.log(reply);
-	                })   
+					tcpp.probe(req.body.host, 80, function(err, available) {
+						console.log("host available: " + available);
+					});
+					
+					pingHost(performanceTest, function(response) {
+						var result= [];
+						for(var index in response)
+						{
+							result.push(response[index]);
+						}
+						
+						cache.set(req.body.host,JSON.stringify(response), function(err,reply){
+		                    console.log(reply);
+		                })   
 
-					res.status(200).jsonp(response);
+						res.status(200).jsonp(response);
+					});
 				});
-			});
+			});	
 		}
 	});
 };
@@ -67,11 +68,11 @@ function pingHost(performanceTest, callback) {
 	]
 	var response = []; 
 	var pingsSuccessfully = 0;
+	var idTest = performanceTest.id;
 	var times;
 	for (region = 0; region < regions.length; region++) {
 		tcpp.ping({ address: performanceTest.host , attempts: performanceTest.requestNumber}, function(err, data) {
 			var results = data.results;
-			var clusterid = 1;
 			var region = regions[pingsSuccessfully].name;
 			var averageTime = 0;
 			times = 0;
@@ -80,17 +81,16 @@ function pingHost(performanceTest, callback) {
 			for(var index in results)
 			{
 				times = times + results[index].time;
-				clusterid++;
 			}
 
 			averageTime = Math.trunc( times / performanceTest.requestNumber);
 			var performanceTestResponse = new PerformanceTestResponse({
-				idTest:    performanceTest.id,
+				idTest:    idTest,
 				region: 	  region,
 				responseTime:  averageTime
 			});
+
 			performanceTestResponse.save(function(err, performanceTestResponse) {
-				if(err) return res.send(500, err.message);
 			});
 
 			response.push({"region" : region, "averageTimeResponse" : averageTime});
@@ -101,4 +101,30 @@ function pingHost(performanceTest, callback) {
 			}
 		});
 	};
+};
+
+function getNextId(id, callback) {
+	Counter.findOne({id: id}, function(err, foundCounter){
+		if (err) { return next(err); }
+		if (foundCounter == null)
+		{
+			var counter = new Counter({
+				id:    id,
+				seq: 	1
+			});
+
+			counter.save(function(err) {
+				if (err) { return next(err); }
+				callback(counter.seq);
+			});
+		}
+		else
+		{
+			foundCounter.seq += 1;
+			foundCounter.save(function(err) {
+				if (err) { return next(err); }
+				callback(foundCounter.seq);
+			});
+		}
+	});
 };
