@@ -104,7 +104,7 @@ componentDidMount: function() {
         <input id="hostinput" value={this.state.hostInputValue} onChange={this.updateHostInputValue} ref="text"/>
         <h4>Number of requests</h4>
         <input id="requestnumberinput" value={this.state.requestnumberInputValue} onChange={this.updateRequestnumberInputValue} type="text" onKeyPress={this.onKeyPress}/>
-        <button id="btnstart" onClick={this.start}>Start!</button>
+        <button id="btnstart"  onClick={this.start}>Start!</button>
         <section>
             <Charts
               data={ this.state.charts.data }
