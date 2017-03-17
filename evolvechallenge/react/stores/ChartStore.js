@@ -1,20 +1,15 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher');
 var EventEmitter = require('events').EventEmitter;
 
-//var _charts = [];
 var _charts = [];
 
 // El callback será siempre ejecutado pasandole el mensaje como primer argumento
 function callback(payload) {
-    // Basándonos en la propiedad type del mensaje, podemos inferir qué datos
-    // contiene el mensaje y qué debemos hacer con ellos
     switch (payload.type) {
         case 'READ':
-            //_charts.push.apply(_charts, payload.charts);
             _charts  = payload.charts;
             break;
         case 'CREATE':
-            //_charts.unshift(payload.charts);
             _charts = payload.charts;
             break;
         case 'DELETE':
@@ -36,9 +31,7 @@ function callback(payload) {
 
 var ChartStore = new EventEmitter();
 
-// Obtener todas las notas
 ChartStore.getChart = function() {
-    // Usamos slice para devolver el propio array, sino una copia
     return _charts;
 };
 

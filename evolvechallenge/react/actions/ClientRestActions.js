@@ -65,25 +65,7 @@ var ClientRestServiceActions = {
             type: 'CREATE',
             charts: chart
         });
-    },
-
-    // Finalmente para eliminar una nota por su id
-    deleteChart: function(id) {
-        // Abrimos db
-        var charts = loadDatabase();
-
-        // Recorremos el array para eliminar los charts
-        for (var i = 0, l = charts.length; i < l; i++) {
-            charts.splice(i, 1);
-            saveDatabase(charts);
-        }
-
-        // Enviamos al Dispatcher la id de la nota eliminada
-        AppDispatcher.dispatch({
-            type: 'DELETE'
-        });
     }
-
 }
 
 module.exports = ClientRestServiceActions;

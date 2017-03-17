@@ -10,21 +10,23 @@ var cache = require('../Server/cache/cache');
 
 //POST - Insert a new Cluster in the DB
 exports.addPerformanceTest = function(req, res) {
-	console.log('Adding new test');
-	console.log(req);
+	console.log('New test');
+	//console.log(req);
 	console.log(req.body);
 
 	const {hostName} = req.body.host 
 
 	 cache.exists(req.body.host, function(err, reply) {
 	    if (reply === 1) {
+			console.log('Found in cache');
 	        cache.get(req.body.host, function (err, reply) {
 				var response = JSON.parse(reply);
 	            console.log(response);
 
 	            res.status(200).jsonp(response);
 	        });
-	    } else { 
+    } else {
+			console.log('Adding new request');
 			var performanceTest = new PerformanceTest({
 				id:    1,
 				host: 	  req.body.host,

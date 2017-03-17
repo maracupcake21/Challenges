@@ -26,8 +26,6 @@ var Body = React.createClass({
       hostInputValue: '',
       requestnumberInputValue: '',
       charts: { data: [[0,0,0]], labels: ['Asia', 'Europe', 'America']},
-			//series: ['Average request times'],
-      //data: [1,1,1],
 			series: ['Average time response'],
 			labels: ['Asia', 'Europe', 'America'],
 			colors: ['#43A19E', '#7B43A1', '#F2317A']
@@ -47,7 +45,6 @@ componentDidMount: function() {
   start: function() {
 
     var requestBody = {
-        id: 1,
         host: this.state.hostInputValue,
         requestNumber: this.state.requestnumberInputValue
     };
