@@ -6,7 +6,7 @@ var challenge = function() {
 			.forBrowser('firefox')
 			.build();
 	var url='http://localhost:3333';
-	//var host='hostname';
+	var host='hostname';
    this.Given(/^I open performance test for "([^"]*)"$/, function (expectedTitle,next) {
 
       driver.get(url).then(next());
@@ -30,7 +30,7 @@ var challenge = function() {
 	   
 	  driver.findElement(webdriver.By.id('hostinput')).sendKeys(hostname).then(next());	
 	  console.log("Hostname: "+hostname);	
-	  //host=hostname;	
+	  host=hostname;	
 	});
 
 	this.When(/^I enter (.*) as a number request$/, function (nrequest,next) {

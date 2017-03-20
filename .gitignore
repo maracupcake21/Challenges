@@ -1,5 +1,6 @@
 #folders ignored
 evolvechallenge/node_modules/
+evolvechallenge/Test/node_modules/
 
 # Windows image file caches
 Thumbs.db
@@ -16,6 +17,7 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
+*.log
 
 # Windows shortcuts
 *.lnk
