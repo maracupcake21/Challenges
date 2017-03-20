@@ -19,6 +19,7 @@ Feature: Performance Test
     | google.com     |  15      | no     |
     | google.com     |  15      | no     |
     | twitter.com    |  12      | no     |
+    | twitter.com    |  15      | no     |
     | travelport.com |  16      | no     |
     | google.com     |  20      | no     |
     | google.com     |  15      | no     |
