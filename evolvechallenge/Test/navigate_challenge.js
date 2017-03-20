@@ -1,8 +1,8 @@
 var webdriver = require('selenium-webdriver');
  
 var driver = new webdriver.Builder()
-   .forBrowser('firefox')
-   .build();
+.forBrowser('firefox')
+.build();
 var url='http://localhost:3333';
 driver.get(url);
 
