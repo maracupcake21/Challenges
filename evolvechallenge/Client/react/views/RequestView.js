@@ -1,5 +1,5 @@
 import React from 'react';
-import constants from '../../helpers/const';
+import constants from '../../../helpers/const';
 var ClientRestActions = require('../actions/ClientRestActions');
 var ChartStore = require('../stores/ChartStore');
 

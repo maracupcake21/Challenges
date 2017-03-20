@@ -23,10 +23,10 @@ app.use(bodyParser.json());
 app.use(methodOverride());
 
 // Import Models and controllers
-var performanceTest     = require('../models/PerformanceTest')(app, mongoose);
-var performanceTestResponse     = require('../models/PerformanceTestResponse')(app, mongoose);
-var counter     = require('../models/Counter')(app, mongoose);
-var performanceTestCtrl = require('../controllers/PerformanceTestsController');
+var performanceTest     = require('./models/PerformanceTest')(app, mongoose);
+var performanceTestResponse     = require('./models/PerformanceTestResponse')(app, mongoose);
+var counter     = require('./models/Counter')(app, mongoose);
+var performanceTestCtrl = require('./controllers/PerformanceTestsController');
 
 // API routes
 var performanceTests = express.Router();

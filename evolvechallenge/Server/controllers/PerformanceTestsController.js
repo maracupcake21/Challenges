@@ -4,7 +4,7 @@ var PerformanceTest  = mongoose.model('PerformanceTest');
 var PerformanceTestResponse  = mongoose.model('PerformanceTestResponse');
 var Counter  = mongoose.model('Counter');
 var tcpp = require('tcp-ping');
-var cache = require('../Server/cache/cache'); 
+var cache = require('../cache/cache'); 
 
 //require('../Server/ping');
 
