@@ -22,3 +22,6 @@ How to start creating a react project (http://vensign.com/reactjs-instalar-todo-
 
 ->Download Redis (https://github.com/rgl/redis/downloads)
 
+For run cucumber you need to install "geckodriver"
+https://github.com/mozilla/geckodriver/releases
+
